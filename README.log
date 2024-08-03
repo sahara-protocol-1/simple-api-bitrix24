@@ -2,7 +2,6 @@
 
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
             "SimpleApiBitrix24\\": "app/Components/SimpleApiBitrix24"
         }
     }
