@@ -17,7 +17,7 @@
 
 
 #3 старт
-        $apiSettings = new SimpleApiBitrix24\ApiSettings();
+        $apiSettings = new \SimpleApiBitrix24\ApiSettings();
         $apiSettings
             ->isWebhookAuth(false)
             ->isTokenAuth(true)
@@ -27,14 +27,14 @@
             ->setSQLiteDbPath('../database/')
             ->setSQLiteDbName('Bitrix24Tokens.db');
 
-        $api = new SimpleApiBitrix24\ApiBitrix24($apiSettings);
+        $api = new \SimpleApiBitrix24\ApiBitrix24($apiSettings);
         
         $api->call('scope');
 
 
 
 #4 Установка локального и публичного приложения
-        $apiSettings = new InstallationAppSettings();
+        $apiSettings = new \SimpleApiBitrix24\InstallationAppSettings();
 
         $apiSettings
             ->setMemberId($_REQUEST['member_id'])
@@ -44,11 +44,11 @@
             ->setRefreshToken($_REQUEST['REFRESH_ID'])
             ->setDomain($_REQUEST['DOMAIN']);
 
-        $this->api->installStart($apiSettings);
+        $api->installStart($apiSettings);
 
-        $this->api->connectTo($_REQUEST['member_id']);
+        $api->connectTo($_REQUEST['member_id']);
 
         // ... тут код установки
 
-        $this->api->installFinish();
+        $api->installFinish();
 
