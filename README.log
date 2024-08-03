@@ -34,9 +34,9 @@
 
 
 #4 Установка локального и публичного приложения
-        $appApiSettings = new \SimpleApiBitrix24\InstallationAppSettings();
+        $appSettings = new \SimpleApiBitrix24\InstallationAppSettings();
 
-        $appApiSettings
+        $appSettings
             ->setMemberId($_REQUEST['member_id'])
             ->setAccessToken($_REQUEST['AUTH_ID'])
             ->setExpiresIn($_REQUEST['AUTH_EXPIRES'])
@@ -44,7 +44,7 @@
             ->setRefreshToken($_REQUEST['REFRESH_ID'])
             ->setDomain($_REQUEST['DOMAIN']);
 
-        $api->installStart($appApiSettings);
+        $api->installStart($appSettings);
 
         $api->connectTo($_REQUEST['member_id']);
 
