@@ -9,10 +9,10 @@
 
 
 #2 на vds должен быть:
-apt install sqlite3
-apt install php-sqlite3
-sqlite3 --version
-php -m | grep sqlite3
+    apt install sqlite3
+    apt install php-sqlite3
+    sqlite3 --version
+    php -m | grep sqlite3
 
 
 
