@@ -1,0 +1,55 @@
+# composer.json:
+
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "SimpleApiBitrix24\\": "app/Components/SimpleApiBitrix24"
+        }
+    }
+
+
+
+# на vds должен быть:
+apt install sqlite3
+apt install php-sqlite3
+sqlite3 --version
+php -m | grep sqlite3
+
+
+
+#старт
+        $apiSettings = new SimpleApiBitrix24\ApiSettings();
+        $apiSettings
+            ->isWebhookAuth(false)
+            ->isTokenAuth(true)
+            ->startWithConnection('c7a9e19f50****e732c0e9b6599d')
+            ->setClientId('local.66qwe***0bd92.11867938')
+            ->setClientSecret('pIoPXQF6EwwumxdF6l****eqwe2wSAB2c9JTC0mB')
+            ->setSQLiteDbPath('../database/')
+            ->setSQLiteDbName('Bitrix24Tokens.db');
+
+        $api = new SimpleApiBitrix24\ApiBitrix24($apiSettings);
+        
+        $api->call('scope');
+
+
+
+#Установка локального и публичного приложения
+        $apiSettings = new InstallationAppSettings();
+
+        $apiSettings
+            ->setMemberId($_REQUEST['member_id'])
+            ->setAccessToken($_REQUEST['AUTH_ID'])
+            ->setExpiresIn($_REQUEST['AUTH_EXPIRES'])
+            ->setApplicationToken($_REQUEST['APP_SID'])
+            ->setRefreshToken($_REQUEST['REFRESH_ID'])
+            ->setDomain($_REQUEST['DOMAIN']);
+
+        $this->api->installStart($apiSettings);
+
+        $this->api->connectTo($_REQUEST['member_id']);
+
+        // ... тут код установки
+
+        $this->api->installFinish();
+
