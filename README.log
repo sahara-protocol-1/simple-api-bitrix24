@@ -1,4 +1,4 @@
-# composer.json:
+#1 composer.json:
 
     "autoload": {
         "psr-4": {
@@ -8,7 +8,7 @@
 
 
 
-# на vds должен быть:
+#2 на vds должен быть:
 apt install sqlite3
 apt install php-sqlite3
 sqlite3 --version
@@ -16,7 +16,7 @@ php -m | grep sqlite3
 
 
 
-#старт
+#3 старт
         $apiSettings = new SimpleApiBitrix24\ApiSettings();
         $apiSettings
             ->isWebhookAuth(false)
@@ -33,7 +33,7 @@ php -m | grep sqlite3
 
 
 
-#Установка локального и публичного приложения
+#4 Установка локального и публичного приложения
         $apiSettings = new InstallationAppSettings();
 
         $apiSettings
