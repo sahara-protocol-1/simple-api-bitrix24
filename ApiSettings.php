@@ -8,7 +8,7 @@ class ApiSettings
 {
     private bool $isWebhookAuth;
     private bool $isTokenAuth;
-    private ?string $startWithConnection;
+    private ?string $startWithConnection = '';
     private ?string $clientId;
     private ?string $clientSecret;
     private ?string $sqliteDbPath;
@@ -26,7 +26,7 @@ class ApiSettings
         return $this;
     }
 
-    public function startWithConnection(string $webhookUrlOrMemberId): ApiSettings
+    public function startWithConnection(string $webhookUrlOrMemberId = ''): ApiSettings
     {
         $this->startWithConnection = $webhookUrlOrMemberId;
         return $this;
